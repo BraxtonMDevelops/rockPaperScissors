@@ -1,3 +1,4 @@
-This project is rock paper scissors in the console of a browser.
+# About this Project: #
 
-It will be written mainly in JavaScript but html might be added for additional functionality.
+This project is rock paper scissors in the console of a browser, though this may be adapted later.
+It will be written mainly in JavaScript.

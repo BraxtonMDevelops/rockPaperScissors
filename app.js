@@ -3,54 +3,73 @@ game();
     function game(){
         let playerScore = 0;
         let computerScore = 0;
-        while((playerScore && computerScore) < 5){
+        let count = 0;
+        while(count < 5){
 
             let playerMove = prompt("Choose Rock, Paper, or Scissors.");
             let computerMove = computerPlay();
             
-            let x = playRound(playerMove, computerMove);
+            let rWinner = determineRoundWinner(playerMove, computerMove);
+            alertRound(rWinner, playerMove, computerMove);
             
-            //count++;
-            switch(x){
-                case 1:
-                    playerScore++;
-                    break;
-                case -1:
-                    computerScore++;
-                    break;
-                default:
-                    break;
-            }
+            count++;
+
+            playerScore = updatePScore(rWinner, playerScore);
+            computerScore = updateCScore(rWinner, computerScore);
+
             alert(`You have a score of ${playerScore}`);
             alert(`the computer has a score of ${computerScore}`);
         }
-        let delta = (computerScore - playerScore);
-        if((computerScore == 5) && (delta >= 2)){
-            alert(`The computer rocked you this game! You lost by ${delta} points!`);        
+        showGameResults(playerScore, computerScore);        
+    }
+    function showGameResults(playerScore, computerScore){
+        if(playerScore > computerScore){
+            alert("Congratulations you triumphed over (this extremely dumb) machine!"); 
         }
-        else if ((computerScore == 5) && (delta < 2)){
-            alert(`You lost to the computer but at least it was only by ${delta} points.`);
-        }
-        else if ((playerScore == 5) && (delta >= -2)){
-            alert(`You beat the computer but it was only by ${Math.abs(delta)} points.`);
+        else if(computerScore > playerScore){
+            alert("Beware the might of the machines. If you don't the end might be nigh!");
         }
         else{
-            alert(`You rocked the computer this game! You beat it by ${Math.abs(delta)} points!`);
+            alert("Welp somehow you done broke it. Be proud of yourself for getting here.")
         }
-
     }
-       
-    function playRound(playerMove, computerMove){
+
+    function updatePScore(rWinner, playerScore){
+        if(rWinner == 1)
+            return playerScore++;
+        else
+            return playerScore;
+    }
+
+    function updateCScore(rWinner, computerScore){
+        if(rWinner == -1)
+            return computerScore++;
+        else
+            return computerScore;
+    }
+
+    function alertRound(rWinner, playerMove, computerMove){
+        switch(rWinner){
+            case 1:
+                alert(`You won this round with ${playerMove}, which dominated the computer's ${computerMove}.`);
+                break;
+            case -1:
+                alert(`The computer won this round with ${computerMove}, which dominated your ${playerMove}.`);
+                break;
+            default:
+                alert(`You tied the comptuer, you both had ${playerMove}`);
+        }
+    }
+
+    function determineRoundWinner(playerMove, computerMove){
         // this line below allows us to normalize player input, since the comptuer should output the same thing everytime and we don't know
         // what the player will input into the game.
         playerMove = playerMove.toLowerCase();
         computerMove = computerMove.toLowerCase();
         if(playerMove == computerMove){
-            alert(`You tied the computer, you both had ${playerMove}.`);
             return 0;
         }    
         if(((playerMove == "rock") && (computerMove == "scissors"))||((playerMove == "paper") && (computerMove == "rock"))||((playerMove == "scissors") && (computerMove == "paper"))){
-            alert(`You won this round with ${playerMove}, which dominated the computer's ${computerMove}.`);
             // this line allows us to signify playerScore needs an update.
             return 1;
         }

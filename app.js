@@ -28,7 +28,7 @@ game();
         if((computerScore == 5) && (delta >= 2)){
             alert(`The computer rocked you this game! You lost by ${delta} points!`);        
         }
-        else if ((computerScore == 5) && (delta <= 2)){
+        else if ((computerScore == 5) && (delta < 2)){
             alert(`You lost to the computer but at least it was only by ${delta} points.`);
         }
         else if ((playerScore == 5) && (delta >= -2)){
@@ -63,8 +63,6 @@ game();
     
     function computerPlay(){
         let choices = ["Rock", "Paper", "Scissors"];
-        // Randomization of between 1 and 3 to select an element of the array.
-        let selection = Math.floor((Math.random() * 3)+ 1); 
-        // In order to ensure no out of bounds errors and that rock gets picked we subtract 1.
-        return choices[selection - 1];
+        // Randomization to select an element of the array.
+        return choices[Math.floor(Math.random()* 3)];
     }

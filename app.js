@@ -44,18 +44,17 @@ game();
         // this line below allows us to normalize player input, since the comptuer should output the same thing everytime and we don't know
         // what the player will input into the game.
         playerMove = playerMove.toLowerCase();
+        computerMove = computerMove.toLowerCase();
         if(playerMove == computerMove){
             alert(`You tied the computer, you both had ${playerMove}.`);
             return 0;
         }    
-        if(((playerMove == "rock") && (computerMove == "Scissors"))||((playerMove == "paper") && (computerMove == "Rock"))||((playerMove == "scissors") && (computerMove == "Paper"))){
-            computerMove = computerMove.toLowerCase();
+        if(((playerMove == "rock") && (computerMove == "scissors"))||((playerMove == "paper") && (computerMove == "rock"))||((playerMove == "scissors") && (computerMove == "paper"))){
             alert(`You won this round with ${playerMove}, which dominated the computer's ${computerMove}.`);
             // this line allows us to signify playerScore needs an update.
             return 1;
         }
         else{
-            computerMove = computerMove.toLowerCase();
             alert(`The computer won this round with ${computerMove}, which dominated your ${playerMove}.`);
             // this line allows us to signify computerScore needs an update.
             return -1;    

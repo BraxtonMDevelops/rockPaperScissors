@@ -31,16 +31,16 @@ game();
         // what the player will input into the game.
         playerMove = playerMove.toLowerCase();
         if(playerMove == computerMove){
-            alert("You tied the computer!");
+            alert(`You tied the computer, you both had ${playerMove}.`);
             return 0;
         }    
         if(((playerMove == "rock") && (computerMove == "Scissors"))||((playerMove == "paper") && (computerMove == "Rock"))||((playerMove == "scissors") && (computerMove == "Paper"))){
-            alert("You won this round!");
+            alert(`You won this round with ${playerMove}, which dominated the computer's ${computerMove}.`);
             // this line allows us to signify playerScore needs an update.
             return 1;
         }
         else{
-            alert("The computer won this round!");
+            alert(`The computer won this round with ${computerMove}, which dominated your ${playerMove}.`);
             // this line allows us to signify computerScore needs an update.
             return -1;    
         }    

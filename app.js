@@ -24,12 +24,27 @@ game();
             alert(`You have a score of ${playerScore}`);
             alert(`the computer has a score of ${computerScore}`);
         }
+        let delta = (computerScore - playerScore);
+        if((computerScore == 5) && (delta > 2)){
+            alert(`The computer rocked you this game! You lost by ${delta} points!`);        
+        }
+        else if ((computerScore == 5) && (delta < 2)){
+            alert(`You lost to the computer but at least it was only by ${delta} points.`);
+        }
+        else if ((playerScore == 5) && (delta > -2)){
+            alert(`You beat the computer but it was only by ${Math.abs(delta)} points.`);
+        }
+        else{
+            alert(`You rocked the computer this game! You beat it by ${Math.abs(delta)} points!`);
+        }
+
     }
        
     function playRound(playerMove, computerMove){
         // this line below allows us to normalize player input, since the comptuer should output the same thing everytime and we don't know
         // what the player will input into the game.
         playerMove = playerMove.toLowerCase();
+        computerMove = computerMove.toLowerCase();
         if(playerMove == computerMove){
             alert(`You tied the computer, you both had ${playerMove}.`);
             return 0;

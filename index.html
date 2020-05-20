@@ -4,7 +4,21 @@
 </head>
 <body>
 <script>
-    let computerMove = computerPlay();
+    let playerMove = prompt("Choose Rock, Paper or Scissors.");
+    let computerMove = prompt("Choose Rock, Paper or Scissors.");//computerPlay();
+       
+    function playRound(playerMove, computerMove){
+        let playerMove = playerMove.lowercase();
+        if(playerMove == computerMove)
+            alert("You tied the computer!");
+        if(((playerMove == "rock") && (computerMove == "Scissors"))||((playerMove == "paper") && (computerMove == "Rock"))||((playerMove == "scissors") && (computerMove == "Paper"))){
+            alert("You won this round!");
+        }
+        else{
+            alert("The computer won this round!");    
+        }    
+    }
+    
     function computerPlay(){
         let choices = ["Rock", "Paper", "Scissors"];
         let selection = Math.floor((Math.random() * 3)+ 1); 

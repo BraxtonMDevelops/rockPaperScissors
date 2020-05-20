@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<head>
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+<script>
+    let computerMove = computerPlay();
+    function computerPlay(){
+        let choices = ["Rock", "Paper", "Scissors"];
+        let selection = Math.floor((Math.random() * 3)+ 1); 
+        return choices[selection - 1];
+    }
+
+</script>
+</body>

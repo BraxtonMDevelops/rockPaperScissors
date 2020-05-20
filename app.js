@@ -1,14 +1,13 @@
 game();
-
-
     function game(){
-        let playerScore, computerScore, count = 0;
+        let playerScore, computerScore = 0;
         while((playerScore || computerScore) < 5){
-            if(count != 0){
-                let playerMove = prompt("Choose Rock, Paper or Scissors.");
-                let computerMove = prompt("Choose Rock, Paper or Scissors.");//computerPlay();
-            }
-    
+            let playerMove = prompt("Choose Rock, Paper, or Scissors.");
+            let computerMove = computerPlay();
+            
+            alert("You have a score of ${playerScore}")
+            alert("The computer has a score of ${computerScore}")
+
             let x = playRound(playerMove, computerMove);
             //count++;
             switch(x){
